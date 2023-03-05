@@ -5,6 +5,8 @@ import { AppBar } from '../components/AppBar'
 import { BalanceDisplay } from '../components/BalanceDisplay'
 import { SendSolForm } from '../components/SendSolForm'
 import Head from 'next/head'
+import { LeftBar } from '../components/LeftBar'
+import { MainArea } from '../components/MainArea'
 
 const Home: NextPage = (props) => {
 
@@ -18,11 +20,20 @@ const Home: NextPage = (props) => {
         />
       </Head>
       <WalletContextProvider>
+
+
         <AppBar />
-        <div className={styles.AppBody}>
+        <div className={styles.mainArea0}>
+          <LeftBar />
+          <MainArea />
+        </div>
+
+
+
+        {/* <div className={styles.AppBody}>
           <BalanceDisplay />
           <SendSolForm />
-        </div>
+        </div> */}
       </WalletContextProvider >
     </div>
   );
