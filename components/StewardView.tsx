@@ -4,16 +4,13 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Button from '@mui/material/Button';
 
-export const StewardView: FC = () => {
-    const [cotPrice, setCotPrice] = useState(0);
-    const [parcels, setParcels] = useState(0);
-    const [avgRating, setAvgRating] = useState(0);
-    const [hectares, setHectares] = useState(0);
-    const [sequesteredTons, setSequesteredTons] = useState(0);
-    const [stewardEarnings, setStewardEarnings] = useState(0);
-    const [mint, setMint] = useState(0);
-    const [burn, setBurn] = useState(0);
-    const [total, setTotal] = useState(0);
+interface Props {
+    setViewFn: (page) => void
+}
+export const StewardView = ({
+    setViewFn
+}: Props ):JSX.Element => {
+
     const [parcelData, setParcelData] = useState([
         [1, "0xblabla",99,1.69,"chart", 42.69, 62],
         [2, "0xbleble",98,1.69,"chart", 42.69, 14],
@@ -22,14 +19,21 @@ export const StewardView: FC = () => {
         [5, "0xblublu",97,1.69,"chart", 42.69, 12],
                                                 ])
 
+    const [parcelsOwned, setParcelsOwned] = useState(10);
+    const [averageRating, setAverageRating] = useState(67);
+    const [treeCover, setTreeCover] = useState(2680);
+    const [totalValue, setTotalValue] = useState("478,953");
+    const [rating, setRating] = useState(77);
+    const [totalSize, setTotalSize] = useState(4000);                                            
+
 
     return (
         <div className={styles.mainAreaLeft}>
             <div style={{display: "flex", flexDirection: "row", marginTop: "5vh",marginBottom: "5vh"}}>
                 <div style={{fontWeight: "bold"}}>Overview</div>
                 <div style={{width: "30vw"}}> </div>
-                <Button style={{marginRight: "1vw"}} variant="outlined">+ Stake parcels</Button>
-                <Button variant="outlined">- Unstake parcels</Button>
+                <Button style={{marginRight: "1vw"}} variant="contained">+ Stake parcels</Button>
+                <Button variant="contained">- Unstake parcels</Button>
             </div>
             
             <div className='infoBoxes' style={{display: "flex", flexDirection: "column", marginBottom: "6vh", width: "13vw", height: "20vh", borderRadius: "3vh", backgroundColor: "cyan"}}>
@@ -38,33 +42,33 @@ export const StewardView: FC = () => {
                 <div style={{display: "flex", flexDirection: "row", marginBottom: "1vh"}}>
                     <div style={{display: "flex", flexDirection: "column", marginLeft: "1vw", width: "6vw"}}>
                             <div style={{fontSize: "15px", color: "grey"}}>Parcels owned</div>
-                            <div style={{fontSize: "15px", fontWeight: "bold"}}>{parcels}</div>
+                            <div style={{fontSize: "15px", fontWeight: "bold"}}>{parcelsOwned}</div>
                     </div>
                     <div style={{display: "flex", flexDirection: "column", marginLeft: "1vw"}}>
                             <div style={{fontSize: "15px", color: "grey"}}>Total value</div>
-                            <div style={{fontSize: "15px", fontWeight: "bold"}}>{parcels}</div>
+                            <div style={{fontSize: "15px", fontWeight: "bold"}}>${totalValue}</div>
                     </div>
                 </div>
 
                 <div style={{display: "flex", flexDirection: "row", marginBottom: "1vh"}}>
                     <div style={{display: "flex", flexDirection: "column", marginLeft: "1vw", width: "6vw"}}>
                             <div style={{fontSize: "15px", color: "grey"}}>Average rating</div>
-                            <div style={{fontSize: "15px", fontWeight: "bold"}}>{parcels}</div>
+                            <div style={{fontSize: "15px", fontWeight: "bold"}}>{averageRating}%</div>
                     </div>
                     <div style={{display: "flex", flexDirection: "column", marginLeft: "1vw"}}>
                             <div style={{fontSize: "15px", color: "grey"}}>Rating</div>
-                            <div style={{fontSize: "15px", fontWeight: "bold"}}>{parcels}</div>
+                            <div style={{fontSize: "15px", fontWeight: "bold"}}>{rating}%</div>
                     </div>
                 </div>
 
                 <div style={{display: "flex", flexDirection: "row", marginBottom: "1vh"}}>
                     <div style={{display: "flex", flexDirection: "column", marginLeft: "1vw", width: "6vw"}}>
                             <div style={{fontSize: "15px", color: "grey"}}>Tree cover</div>
-                            <div style={{fontSize: "15px", fontWeight: "bold"}}>{parcels}</div>
+                            <div style={{fontSize: "15px", fontWeight: "bold"}}>{treeCover} ha</div>
                     </div>
                     <div style={{display: "flex", flexDirection: "column", marginLeft: "1vw"}}>
                             <div style={{fontSize: "15px", color: "grey"}}>Total size</div>
-                            <div style={{fontSize: "15px", fontWeight: "bold"}}>{parcels}</div>
+                            <div style={{fontSize: "15px", fontWeight: "bold"}}>{totalSize} ha</div>
                     </div>
                 </div>
 
@@ -99,7 +103,13 @@ export const StewardView: FC = () => {
                                 <div style= {{width: "7vw", height: "2vh", fontSize: "2vh", color: "grey", fontWeight: "bold"}}>{parcel[4]}</div>
                                 <div style= {{width: "10vw", height: "2vh", fontSize: "2vh", color: "grey", fontWeight: "bold"}}>{parcel[5]}</div>
                                 <div style= {{width: "10vw", height: "2vh", fontSize: "2vh", color: "grey", fontWeight: "bold"}}>{parcel[6]}</div>
-                                <div style= {{width: "7vw", height: "2vh", fontSize: "2vh", color: "grey", fontWeight: "bold"}}><Button variant="outlined">View</Button></div>
+                                <div style= {{width: "7vw", height: "2vh", fontSize: "2vh", color: "grey", fontWeight: "bold"}}>
+                                    <Button variant="contained"  
+                                        onClick={() => {
+                                            setViewFn("parcel")
+                                    }}>+</Button>
+                                </div>
+
                             </div>       
                         )
                         
@@ -108,7 +118,7 @@ export const StewardView: FC = () => {
                     }
                 </div>
                 <div>
-                    <Button style={{marginLeft: "25vw"}} variant="outlined">View More</Button>
+                    <Button style={{marginLeft: "25vw"}} variant="contained">View More</Button>
                 </div>
             </div>
 

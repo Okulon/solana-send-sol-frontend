@@ -7,16 +7,26 @@ import { useState } from 'react'
 import { StewardView } from './StewardView'
 import { StewardViewR1 } from './StewardViewR1'
 import { StewardViewR2 } from './StewardViewR2'
-import { ParcelViewR1 } from './ParcelViewR1'
 import { ParcelView } from './ParcelView'
+import { ParcelViewR1 } from './ParcelViewR1'
+import { ParcelViewR2 } from './ParcelViewR2'
+import { ParcelViewR3 } from './ParcelViewR3'
 
-export const MainArea: FC = () => {
-    const [view, setView] = useState("parcel");
+interface Props {
+    view,
+    setViewFn: (page) => void
+}
+
+export const MainArea = ({
+    view,
+    setViewFn
+}: Props ):JSX.Element => {
+
     const renderMainView = () => {
         if (view == "main") {
-          return <OverviewArea></OverviewArea>;
+          return <OverviewArea setViewFn={setViewFn}></OverviewArea>;
         } else if (view == "steward") {
-          return <StewardView></StewardView>
+          return <StewardView setViewFn={setViewFn}></StewardView>
         } else if (view == "parcel") {
             return <ParcelView></ParcelView>
         }
@@ -27,7 +37,7 @@ export const MainArea: FC = () => {
         } else if (view == "steward") {
             return <StewardViewR1></StewardViewR1>
         } else if (view == "parcel"){
-            return <ParcelViewR1></ParcelViewR1>
+            return <ParcelViewR3></ParcelViewR3>
         }
     }
     const renderR2 = () => {
@@ -36,7 +46,7 @@ export const MainArea: FC = () => {
         } else if (view == "steward") {
             return <StewardViewR2></StewardViewR2>
         } else if (view == "parcel"){
-            return;
+            return
         }
     }
     return (

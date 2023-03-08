@@ -7,9 +7,14 @@ import { SendSolForm } from '../components/SendSolForm'
 import Head from 'next/head'
 import { LeftBar } from '../components/LeftBar'
 import { MainArea } from '../components/MainArea'
+import { useState } from 'react'
 
 const Home: NextPage = (props) => {
-
+  const [viewPage, setViewPage] = useState("main");
+  const setViewFn = (page) => {
+    setViewPage(page)
+    console.log(page)
+  }
   return (
     <div className={styles.App}>
       <Head>
@@ -24,8 +29,8 @@ const Home: NextPage = (props) => {
 
         <AppBar />
         <div className={styles.mainArea0}>
-          <LeftBar />
-          <MainArea />
+          <LeftBar view={viewPage} setViewFn={setViewFn}/>
+          <MainArea view={viewPage} setViewFn={setViewFn}/>
         </div>
 
 

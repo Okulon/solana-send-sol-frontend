@@ -4,7 +4,12 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Button from '@mui/material/Button';
 
-export const OverviewArea: FC = () => {
+interface Props {
+    setViewFn: (page) => void
+}
+export const OverviewArea = ({
+    setViewFn
+}: Props ):JSX.Element => {
     const [cotPrice, setCotPrice] = useState(0);
     const [parcels, setParcels] = useState(0);
     const [avgRating, setAvgRating] = useState(0);
@@ -109,7 +114,12 @@ export const OverviewArea: FC = () => {
                                 <div style= {{width: "7vw", height: "2vh", fontSize: "2vh", color: "grey", fontWeight: "bold"}}>{parcel[4]}</div>
                                 <div style= {{width: "10vw", height: "2vh", fontSize: "2vh", color: "grey", fontWeight: "bold"}}>{parcel[5]}</div>
                                 <div style= {{width: "10vw", height: "2vh", fontSize: "2vh", color: "grey", fontWeight: "bold"}}>{parcel[6]}</div>
-                                <div style= {{width: "7vw", height: "2vh", fontSize: "2vh", color: "grey", fontWeight: "bold"}}><Button variant="outlined">View</Button></div>
+                                <div style= {{width: "7vw", height: "2vh", fontSize: "2vh", color: "grey", fontWeight: "bold"}}>
+                                    <Button variant="contained"   
+                                        onClick={() => {
+                                            setViewFn("parcel")
+                                    }}>+</Button>
+                                </div>
                             </div>       
                         )
                         
@@ -118,7 +128,7 @@ export const OverviewArea: FC = () => {
                     }
                 </div>
                 <div>
-                    <Button style={{marginLeft: "25vw"}} variant="outlined">View More</Button>
+                    <Button style={{marginLeft: "25vw"}} variant="contained" color="primary">View More</Button>
                 </div>
             </div>
 
