@@ -1,8 +1,11 @@
 import { FC } from 'react'
 import styles from '../styles/Home.module.css'
 import { useState } from 'react'
+import Image from 'next/image'
 
-export const ParcelViewR3: FC = () => {
+export const ParcelViewR3 = ({
+    
+} ):JSX.Element => {
     const [parcelData, setParcelData] = useState([
         [1, "0xblabla","0xwtheadm", 420.23],
         [2, "0xpjhng","0xoh3rqf", 600.81],
@@ -45,8 +48,8 @@ export const ParcelViewR3: FC = () => {
             </div>
             
             <div style={{fontWeight: "bold"}}>Price development</div>
-            <div style={{width: "25vw", height: "32vh", backgroundColor: "green", marginTop: "1vh", borderRadius: "2vh"}}>
-
+            <div style={{width: "25vw", height: "32vh", marginTop: "1vh", borderRadius: "2vh"}}>
+                <Image src="/price_development.png" height={230*1.5} width={342*1.5} />
             </div>
         </div>
     )

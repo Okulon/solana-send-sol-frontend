@@ -10,7 +10,7 @@ export const ParcelView: FC = () => {
     const [parcelData, setParcelData] = useState(
         [1, "0xblabla",99,1.69,"chart", 42.69, 62]
                                                 )
-    const [owner, setOwner] = useState("0xH29aWADwda3");
+    const [owner, setOwner] = useState("0x8vqeADS5Lb");
     const [rating, setRating] = useState(77);
     const [rating2, setRating2] = useState(77);
     const [treeCover, setTreeCover] = useState(308);
@@ -23,7 +23,7 @@ export const ParcelView: FC = () => {
     const [totalSize, setTotalSize] = useState(400);
 
     const [co2eAvoided, setco2eAvoided] = useState("2,613.823");
-    const [name, setName] = useState("Jorge");
+    const [name, setName] = useState("Amazon Watch NGO");
 
 
 
@@ -39,7 +39,7 @@ export const ParcelView: FC = () => {
                 <Button variant="contained">- Report inactive steward</Button>
             </div>
             <div style={{display: "flex", flexDirection: "row"}}>
-                <div style={{width: "15vw", height: "20vh", backgroundColor: "green"}}></div>
+                <Image src="/parcel.png" height={"256"} width={"256"} />
                 
                 <div className='infoBoxes0' style={{display: "flex", flexDirection: "column", marginBottom: "6vh", width: "13vw", height: "20vh", borderRadius: "3vh", marginLeft: "3vw", backgroundColor: "cyan"}}>
                     <div style={{fontWeight: "bold", marginLeft: "1vw"}}>Market data</div>
@@ -113,24 +113,28 @@ export const ParcelView: FC = () => {
             <div style={{display: "flex", flexDirection: "row"}}> 
                 <div style={{display: "flex", flexDirection: "column", width: "36vw", height: "44vh"}}> 
                     <div style={{marginTop: "2vh", fontWeight:'bold', fontSize:20}}>Ecological Performance</div>
-                    <div style={{marginTop: "1vh", marginLeft: "2vw", fontSize:10}}>Total CO2e avoided</div>
-                    <div style={{marginTop: "1vh", marginLeft: "2vw", fontWeight:'bold', fontSize:15}}>{co2eAvoided} tonnes</div>
-                    <div style={{marginTop: "2vh", marginLeft: "2vw", display: "flex", flexDirection: "column", width: "34vw", height: "34vh",  backgroundColor: "red"}}></div>
+                    {/* <div style={{marginTop: "1vh", marginLeft: "2vw", fontSize:10}}>Total CO2e avoided</div>
+                    <div style={{marginTop: "1vh", marginLeft: "2vw", fontWeight:'bold', fontSize:15}}>{co2eAvoided} tonnes</div> */}
+                    <div style={{marginTop: "2vh", marginLeft: "2vw", display: "flex", flexDirection: "column", width: "34vw", height: "34vh"}}>
+                        <Image style={{marginTop: "2vh"}} src="/parcel_graph.png" height={"407"} width={"546"} />
+                    </div>
 
                 </div>
                 <div style={{display: "flex", flexDirection: "column", width: "16vw", height: "44vh", marginLeft: "4vw"}}> 
                     <div style={{marginTop: "2vh", fontWeight:'bold', fontSize:20}}>Steward</div>
-                    <div style={{display: "flex", flexDirection: "row"}}>
+                    <div style={{display: "flex", flexDirection: "column"}}>
                         <div style={{marginLeft: "0vw", marginTop: "1vh", display: "flex", flexDirection: "column", fontSize:10}}>
-                            <div style={{fontSize:10}}>Name</div>
+                            <div style={{fontSize:16}}>Name</div>
                             <div style={{fontWeight:'bold', fontSize:15}}>{name}</div>
                         </div>
-                        <div style={{marginLeft: "2vw", marginTop: "1vh", display: "flex", flexDirection: "column", fontSize:10}}>
-                            <div style={{fontSize:10}}>Address</div>
+                        <div style={{marginLeft: "0vw", marginTop: "1vh", display: "flex", flexDirection: "column", fontSize:10}}>
+                            <div style={{fontSize:16}}>Address</div>
                             <div style={{fontWeight:'bold', fontSize:15}}>{String(owner).slice(0,4)}...{String(owner).slice(String(owner).length-4)}</div>
                         </div>
                     </div>
-                    <div style={{marginTop: "2vh", display: "flex", flexDirection: "column", width: "16vw", height: "34vh",  backgroundColor: "red"}}></div>
+                    <div style={{marginTop: "2vh", display: "flex", flexDirection: "column", width: "16vw", height: "34vh"}}>
+                        <Image style={{marginTop: "2vh"}} src="/steward.png" height={"200"} width={"160"} />
+                    </div>
 
                 </div>
             </div>

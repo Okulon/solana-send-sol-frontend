@@ -8,8 +8,6 @@ import { StewardView } from './StewardView'
 import { StewardViewR1 } from './StewardViewR1'
 import { StewardViewR2 } from './StewardViewR2'
 import { ParcelView } from './ParcelView'
-import { ParcelViewR1 } from './ParcelViewR1'
-import { ParcelViewR2 } from './ParcelViewR2'
 import { ParcelViewR3 } from './ParcelViewR3'
 
 interface Props {

@@ -12,9 +12,9 @@ export const AppBar: FC = () => {
             <div className="filler" style={{width: "50vw", height: "2vh"}}>
             </div>
             <WalletMultiButton />
+            {/* <Button style={{marginLeft: "1vw"}} variant="contained">+</Button>
             <Button style={{marginLeft: "1vw"}} variant="contained">+</Button>
-            <Button style={{marginLeft: "1vw"}} variant="contained">+</Button>
-            <Button style={{marginLeft: "1vw"}} variant="contained">+</Button>
+            <Button style={{marginLeft: "1vw"}} variant="contained">+</Button> */}
         </div>
     )
 }
